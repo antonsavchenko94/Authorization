@@ -26,4 +26,5 @@ QMap<QString, QString> MainWindow::getAutorizationCredentials()
 void MainWindow::on_pushButton_clicked()
 {
     emit login();
+    // ////////
 }
