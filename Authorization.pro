@@ -12,18 +12,19 @@ TARGET = Authorization
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-    EmailAddressRetrievalApplication.cpp \
-    ShowMessages.cpp \
-    MainWindow.cpp
+SOURCES +=\
+    main.cpp \
+    Email_Address_Retrieval_Application.cpp \
+    Main_Window.cpp \
+    Show_Messages.cpp
 
 HEADERS  += \
-    tracer.h \
-    interactiveCertificateVerifier.hpp \
-    timeoutHandler.h \
-    EmailAddressRetrievalApplication.h \
-    ShowMessages.h \
-    MainWindow.h
+    Email_Address_Retrieval_Application.h \
+    Interactive_Certificate_Verifier.hpp \
+    Main_Window.h \
+    Show_Messages.h \
+    Time_Out_Handler.h \
+    Tracer.h
 
 FORMS    += mainwindow.ui \
     ShowMessages.ui
