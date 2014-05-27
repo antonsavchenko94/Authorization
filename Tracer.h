@@ -11,10 +11,10 @@
 /** Tracer used to demonstrate logging communication between client and server.
   */
 
-class myTracer : public vmime::net::tracer
+class Tracer : public vmime::net::tracer
 {
 public:
-    myTracer(vmime::shared_ptr <std::ostringstream> stream,
+    Tracer(vmime::shared_ptr <std::ostringstream> stream,
              vmime::shared_ptr <vmime::net::service> serv, const int connectionId)
         : m_stream(stream), m_service(serv), m_connectionId(connectionId)
     {
@@ -36,17 +36,17 @@ private:
     const int m_connectionId;
 };
 
-class myTracerFactory : public vmime::net::tracerFactory
+class TracerFactory : public vmime::net::tracerFactory
 {
 public:
-    myTracerFactory(vmime::shared_ptr <std::ostringstream> stream)
+    TracerFactory(vmime::shared_ptr <std::ostringstream> stream)
         : m_stream(stream)
     {
     }
     vmime::shared_ptr <vmime::net::tracer> create
         (vmime::shared_ptr <vmime::net::service> serv, const int connectionId)
     {
-        return vmime::make_shared <myTracer>(m_stream, serv, connectionId);
+        return vmime::make_shared <Tracer>(m_stream, serv, connectionId);
     }
 private:
     vmime::shared_ptr <std::ostringstream> m_stream;
