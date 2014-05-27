@@ -1,6 +1,6 @@
-#include "mainwindow.h"
+#include "MainWindow.h"
 #include "ui_mainwindow.h"
-#include "email_address_retrieval_application.h"
+#include "EmailAddressRetrievalApplication.h"
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -15,16 +15,14 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-QMap<QString, QString> MainWindow::getAutorizationCredentials()
-{
+QMap<QString, QString> MainWindow::getAutorizationCredentials(){
+
     QMap<QString, QString> tableData;
     tableData.insert("login",ui->eLogin->text());
     tableData.insert("password",ui->ePassword->text());
     return tableData;
 }
 
-void MainWindow::on_pushButton_clicked()
-{
+void MainWindow::on_pushButton_clicked(){
     emit login();
-    // ////////
 }

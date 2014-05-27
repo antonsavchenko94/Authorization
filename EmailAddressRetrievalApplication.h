@@ -15,18 +15,19 @@
 #include <vmime/net/session.hpp>
 #include <vmime/net/store.hpp>
 #include <vmime/utility/url.hpp>
+#include <vmime/net/messageSet.hpp>
 
 #include "memory.h"
 #include "timeoutHandler.h"
 #include "tracer.h"
-#include "user_profile.h"
-#include "mainwindow.h"
+#include "ShowMessages.h"
+#include "MainWindow.h"
 
 class EmailAddressRetrievalApplication: public QObject
 {
     Q_OBJECT
 
-struct strMassages
+struct strMessages
 {
     QList <int>  num;
     QList <QString> msgPart;
@@ -37,16 +38,24 @@ public:
 
     int exec(int argc, char *argv[]);
     QMap <QString,QString> showUserProfile();    
-    strMassages fetchMassages(vmime::shared_ptr  <vmime::net::store>&st);
-    strMassages setMasseges();
+    strMessages fetchNewMessages(vmime::shared_ptr  <vmime::net::store>&st);
+    strMessages fetchReadMessages(vmime::shared_ptr  <vmime::net::store>&st);
+    strMessages getNewMasseges();
+    strMessages getReadMasseges();
+    void deleteMsg(int &index);
     vmime::string getImap();
     bool imapConnection();
+    void extractMsg();
+    vmime::shared_ptr <vmime::net::folder> folder;
+
 private:
     QMap <QString,QString> authorizationData;
-    strMassages massages;
+    strMessages newMessages;
+    strMessages readMessages;
     MainWindow* mainWindow;
     vmime::shared_ptr  <vmime::net::store> store ;
     vmime::shared_ptr <vmime::net::session> session;
+
 
 public slots:
     void onLogin();

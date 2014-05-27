@@ -1,28 +1,30 @@
-#ifndef USER_PROFILE_H
-#define USER_PROFILE_H
+#ifndef ShowMessages_H
+#define ShowMessages_H
 
 #include <QMainWindow>
 #include <QMap>
 #include <QLabel>
 #include <QDebug>
 
-#include "email_address_retrieval_application.h"
 
 namespace Ui {
-class User_Profile;
+class ShowMessages;
 }
 
-class User_Profile : public QMainWindow
+class ShowMessages : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    void setTolabel(QLabel *);
-    QList<QString> setData;
-    QList<int>  setNum;
-    explicit User_Profile(QList<QString> &data,QList<int> &num, QWidget *parent = 0);
 
-    ~User_Profile();
+    QList<QString> setNewMsg;
+    QList<QString> setReadMsg;
+    QList<int>  setReadNum;
+    QList<int>  setNewNum;
+
+    explicit ShowMessages(QList<QString> &newMsg, QList<int> &newNum, QList<QString> &readMsg, QList<int> &readNum, QWidget *parent = 0);
+
+    ~ShowMessages();
 
 private slots:
     void on_listWidget_activated(const QModelIndex &index);
@@ -31,14 +33,22 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_openMessages_clicked();
+
 private:
 
-    Ui::User_Profile *ui;
-    QList<QString> &data_;
-    QList <int> &num_;
     void setIndex(int &index);
+    int getIndex();
+    void setToNewMsg ();
+    void setToReadMsg ();
+
+    Ui::ShowMessages *ui;
+    QList<QString> &newMsg_;
+    QList<int> &newNum_;
+    QList<QString> &readMsg_;
+    QList<int> &readNum_;
     int msgIndex;
 
 };
 
-#endif // USER_PROFILE_H
+#endif // ShowMessages_H

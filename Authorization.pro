@@ -13,19 +13,20 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
-    user_profile.cpp \
-    Email_Address_Retrieval_Application.cpp
+    EmailAddressRetrievalApplication.cpp \
+    ShowMessages.cpp \
+    MainWindow.cpp
 
-HEADERS  += mainwindow.h \
-    user_profile.h \
+HEADERS  += \
     tracer.h \
     interactiveCertificateVerifier.hpp \
     timeoutHandler.h \
-    email_address_retrieval_application.h
+    EmailAddressRetrievalApplication.h \
+    ShowMessages.h \
+    MainWindow.h
 
 FORMS    += mainwindow.ui \
-    user_profile.ui
+    ShowMessages.ui
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../usr/local/lib/release/ -lvmime
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../usr/local/lib/debug/ -lvmime
