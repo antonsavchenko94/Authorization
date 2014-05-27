@@ -1,4 +1,4 @@
-#include "ShowMessages.h"
+#include "Show_Messages.h"
 #include "ui_user_profile.h"
 #include <QDebug>
 
@@ -22,9 +22,6 @@ ShowMessages::ShowMessages(QList<QString> &newMsg, QList<int> &newNum, QList<QSt
 }
 ShowMessages::~ShowMessages(){
     delete ui;
-}
-
-void ShowMessages::on_listWidget_clicked(const QModelIndex &index){
 }
 
 void ShowMessages::on_pushButton_clicked() {
@@ -52,6 +49,7 @@ void ShowMessages::setToReadMsg(){
       ui->listWidget_2->addItem(setReadMsg.at(i));
 }
 
-void ShowMessages::on_openMessages_clicked(){
-    int i = getIndex();
-}
+//void ShowMessages::on_openMessages_clicked(){
+//    int i = getIndex();
+//    i++
+//}
