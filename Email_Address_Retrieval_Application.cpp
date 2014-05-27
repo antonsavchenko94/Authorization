@@ -33,7 +33,7 @@ int EmailAddressRetrievalApplication::exec(int argc, char *argv[]) {
     imapURL.append(":");
     imapURL.append(singInData["password"].toStdString());
     imapURL.append("@imap.gmail.com:993");
-
+// //////////
     return imapURL;
  }
 
@@ -54,7 +54,7 @@ int EmailAddressRetrievalApplication::exec(int argc, char *argv[]) {
      store->connect();
 
      if(store->isConnected()){
-         return true;
+         return false;
      }
 
  }
