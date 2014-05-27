@@ -1,6 +1,6 @@
-#include "EmailAddressRetrievalApplication.h"
+#include "Email_Address_Retrieval_Application.h"
 #include "QDebug"
-#include "interactiveCertificateVerifier.hpp"
+#include "Interactive_Certificate_Verifier.hpp"
 
 EmailAddressRetrievalApplication::EmailAddressRetrievalApplication() {}
 
@@ -50,7 +50,7 @@ int EmailAddressRetrievalApplication::exec(int argc, char *argv[]) {
 
 bool EmailAddressRetrievalApplication::imapConnection(){
     session = vmime::make_shared<vmime::net::session>();
-    vmime::utility::url url(getImap());//vmime::utility::url url("imaps://savchenko.inc:BanderaMozli@imap.gmail.com:993");
+    vmime::utility::url url("imaps://savchenko.inc:BanderaMozli@imap.gmail.com:993");//vmime::utility::url url(getImap());
 
     store = session->getStore(url);
     store->setProperty("connection.tls", true);
@@ -59,7 +59,7 @@ bool EmailAddressRetrievalApplication::imapConnection(){
 
     vmime::shared_ptr <std::ostringstream> traceStream = vmime::make_shared <std::ostringstream>();
 
-    store->setTracerFactory(vmime::make_shared <myTracerFactory>(traceStream));
+    store->setTracerFactory(vmime::make_shared <TracerFactory>(traceStream));
     store->connect();
 
     if(store->isConnected()){

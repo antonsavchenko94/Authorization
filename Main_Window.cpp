@@ -1,6 +1,6 @@
-#include "MainWindow.h"
+#include "Main_Window.h"
 #include "ui_mainwindow.h"
-#include "EmailAddressRetrievalApplication.h"
+#include "Email_Address_Retrieval_Application.h"
 
 
 MainWindow::MainWindow(QWidget *parent) :

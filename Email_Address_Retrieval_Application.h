@@ -7,8 +7,7 @@
 #include <functional>
 #include <iostream>
 #include <fstream>
-#include <memory>
-#include <string>
+//#include <string>
 #include <QApplication>
 
 #include <vmime/vmime.hpp>
@@ -18,10 +17,10 @@
 #include <vmime/net/messageSet.hpp>
 
 #include "memory.h"
-#include "timeoutHandler.h"
-#include "tracer.h"
-#include "ShowMessages.h"
-#include "MainWindow.h"
+#include "Time_Out_Handler.h"
+#include "Tracer.h"
+#include "Show_Messages.h"
+#include "Main_Window.h"
 
 class EmailAddressRetrievalApplication: public QObject
 {
