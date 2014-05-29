@@ -1,5 +1,5 @@
-#include "Main_Window.h"
-#include "Email_Address_Retrieval_Application.h"
+#include "main_window.h"
+#include "email_address_retrieval_application.h"
 
 int main(int argc, char *argv[]) {
     EmailAddressRetrievalApplication eara;

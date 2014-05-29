@@ -13,21 +13,27 @@ TEMPLATE = app
 
 
 SOURCES +=\
+    mail_server.cpp \
+    email_address_retrieval_application.cpp \
+    interactive_certificate_verifier.cpp \
+    main_window.cpp \
     main.cpp \
-    Email_Address_Retrieval_Application.cpp \
-    Main_Window.cpp \
-    Show_Messages.cpp
+    time_out_handler.cpp \
+    tracer.cpp \
+    mail_box.cpp
 
 HEADERS  += \
-    Email_Address_Retrieval_Application.h \
-    Interactive_Certificate_Verifier.hpp \
-    Main_Window.h \
-    Show_Messages.h \
-    Time_Out_Handler.h \
-    Tracer.h
+    mail_server.h \
+    email_address_retrieval_application.h \
+    interactive_certificate_verifier.hpp \
+    main_window.h \
+    time_out_handler.h \
+    tracer.h \
+    mail_box.h
 
-FORMS    += mainwindow.ui \
-    ShowMessages.ui
+FORMS    += \
+    mail_box.ui \
+    main_window.ui
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../usr/local/lib/release/ -lvmime
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../usr/local/lib/debug/ -lvmime
