@@ -20,7 +20,8 @@ SOURCES +=\
     main.cpp \
     time_out_handler.cpp \
     tracer.cpp \
-    mail_box.cpp
+    mail_box.cpp \
+    parser_of_string.cpp
 
 HEADERS  += \
     mail_server.h \
@@ -29,7 +30,8 @@ HEADERS  += \
     main_window.h \
     time_out_handler.h \
     tracer.h \
-    mail_box.h
+    mail_box.h \
+    parser_of_string.h
 
 FORMS    += \
     mail_box.ui \
