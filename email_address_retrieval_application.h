@@ -30,6 +30,7 @@ public:
     int exec(int argc, char *argv[]);
     QMap <QString,QString> showUserProfile();    
 
+
 private:
     QMap <QString,QString> authorizationData;
     MainWindow* mainWindow;
@@ -41,7 +42,7 @@ signals:
 
 public slots:
     void onLogin(QMap<QString, QString> user);
-
+    void setCentralOnDesktop();
 };
 
 #endif // CONTROL_H
