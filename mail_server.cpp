@@ -3,6 +3,7 @@
 #include "tracer.h"
 #include "interactive_certificate_verifier.hpp"
 
+#include <QTextCodec>
 #include <QString>
 #include <QRegExp>
 #include <QDebug>
@@ -24,8 +25,14 @@ QList <QString>  MailServer::fetchMessages(){
         folder->fetchMessage(msg, vmime::net::fetchAttributes::FLAGS| vmime::net::fetchAttributes::ENVELOPE);
         msg->getFlags();
         hdr = msg->getHeader();
+
         std::string strUtfFrom= hdr->From()->generate();
-        QString strFrom = QString::fromUtf8(strUtfFrom.c_str());
+        vmime:: text outText ;
+        vmime::text::decodeAndUnfold(strUtfFrom , &outText ) ;
+        vmime::string sbText = outText.getConvertedText(vmime::charset("utf-8"));
+        QString strFrom = QString::fromUtf8(sbText.c_str());
+
+        strFrom = parsing(strFrom);
         msgList.insert(i,strFrom);
   }
   return msgList;
@@ -35,15 +42,14 @@ bool MailServer::imapConnection(){
   session = vmime::make_shared<vmime::net::session>();
 
   vmime::utility::url url("imaps://savchenko.inc:BanderaMozli@imap.gmail.com:993");//vmime::utility::url url(getImap());
-
   store = session->getStore(url);
   store->setProperty("connection.tls", true);
   store->setTimeoutHandlerFactory(vmime::make_shared <timeoutHandlerFactory>());
   store->setCertificateVerifier (vmime::make_shared <interactiveCertificateVerifier>());
   vmime::shared_ptr <std::ostringstream> traceStream = vmime::make_shared <std::ostringstream>();
-
   store->setTracerFactory(vmime::make_shared <TracerFactory>(traceStream));
   store->connect();
+
   if(store->isConnected()){
        return true;
   }
@@ -69,4 +75,12 @@ vmime::string MailServer::getImap(){
   imapString.append("@imap.gmail.com:993");
 
   return imapString;
+}
+
+QString MailServer::parsing(QString &str){
+  parser = new ParserOfString();
+  QString mail = parser->parseToEmail(str);
+  QString author = parser->parseByAuthor(str);
+
+  return author+"  ::  "+mail;
 }
