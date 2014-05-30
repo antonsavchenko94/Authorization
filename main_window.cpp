@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow) {
     ui->setupUi(this);
+    ui->ePassword->setEchoMode(QLineEdit::Password);
 }
 
 MainWindow::~MainWindow() {
@@ -24,10 +25,9 @@ QMap<QString, QString> MainWindow::getAutorizationCredentials(){
 }
 
 void MainWindow::onChangeForm(QList<QString> &headers){
-  qDebug()<<"Change!!";
-  resize(700,400);
   setWindowTitle("Email Box");
   MailBox* mb = new MailBox(headers);
+  resize(mb->width(),mb->height());
   setCentralWidget(mb);
 }
 
