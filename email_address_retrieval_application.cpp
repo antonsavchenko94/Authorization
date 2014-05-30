@@ -17,15 +17,14 @@ int EmailAddressRetrievalApplication::exec(int argc, char *argv[]) {
  }
 
 void EmailAddressRetrievalApplication::onLogin(QMap<QString, QString>  user) {
-    MailServer *gms = new MailServer (user);
     mainWindow->setCursor(Qt::WaitCursor);
+    MailServer *gms = new MailServer (user);
+
     gms->imapConnection();
     QList<QString> list;
-    qDebug()<<"Point 1";
     list = gms->fetchMessages();
-    qDebug()<<"Point 3";
     emit changeForm(list);
-    qDebug()<<"Point 4";
+
     setCentralOnDesktop();
     mainWindow->setCursor(Qt::ArrowCursor);
 }
