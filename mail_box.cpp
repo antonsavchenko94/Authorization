@@ -15,11 +15,10 @@ MailBox::~MailBox()
   delete ui;
 }
 
-void MailBox::setHeadersToTextEdit(QList <QString> &headers)
-{
+void MailBox::setHeadersToTextEdit(QList <QString> &headers){
   int size = headers.size();
   for(int i=0; i<=size-1; i++){
-      ui->textEdit->append(headers[i]);
-    }
+      ui->textEdit->append(headers[i]+"\n");
+     }
 }
 
