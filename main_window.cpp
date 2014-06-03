@@ -3,6 +3,7 @@
 #include "email_address_retrieval_application.h"
 
 #include <QDebug>
+#include <QKeyEvent>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -17,9 +18,12 @@ MainWindow::~MainWindow() {
 }
 
 QMap<QString, QString> MainWindow::getAutorizationCredentials(){
-
+    ParserOfString pos;
     QMap<QString, QString> tableData;
-    tableData.insert("login",ui->eLogin->text());
+    QString login ;
+    login = ui->eLogin->text();
+    login = pos.parseToLogin(login);
+    tableData.insert("login", login);
     tableData.insert("password",ui->ePassword->text());
     return tableData;
 }

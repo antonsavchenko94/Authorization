@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include "mail_box.h"
-
+#include "parser_of_string.h"
 #include <QRegExpValidator>
 #include <QMainWindow>
 #include <QValidator>
