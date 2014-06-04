@@ -17,9 +17,10 @@ class MailServer
   };
 
 public:
+  MailServer(QMap<QString,QString> &user);
+
   void setUserData(const QMap<QString, QString> &value);
   QMap<QString, QString> getUserData() const;
-  MailServer(QMap<QString,QString> &user);
   QList<QString> fetchMessages();
   strMessages getMasseges();
   bool imapConnection();
