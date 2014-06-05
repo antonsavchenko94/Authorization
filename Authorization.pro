@@ -22,7 +22,8 @@ SOURCES +=\
     tracer.cpp \
     mail_box.cpp \
     parser_of_string.cpp \
-    tests/test_email_and_name.cpp
+    tests/test_email_and_name.cpp \
+    tests/conection_test.cpp
 
 HEADERS  += \
     mail_server.h \
@@ -33,7 +34,8 @@ HEADERS  += \
     tracer.h \
     mail_box.h \
     parser_of_string.h \
-    tests/test_email_and_name.h
+    tests/test_email_and_name.h \
+    tests/conection_test.h
 
 FORMS    += \
     mail_box.ui \
@@ -52,15 +54,15 @@ else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/..
 else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../../../usr/local/lib/debug/vmime.lib
 else:unix: PRE_TARGETDEPS += $$PWD/../../../../usr/local/lib/libvmime.a
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../gtest-1.7.0/release/ -lgtest
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../gtest-1.7.0/debug/ -lgtest
-else:unix: LIBS += -L$$PWD/../../gtest-1.7.0/ -lgtest
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../gtest-1.7.0/lib/.libs/release/ -lgtest
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../gtest-1.7.0/lib/.libs/debug/ -lgtest
+else:unix: LIBS += -L$$PWD/../gtest-1.7.0/lib/.libs/ -lgtest
 
-INCLUDEPATH += $$PWD/../../gtest-1.7.0/include
-DEPENDPATH += $$PWD/../../gtest-1.7.0/include
+INCLUDEPATH += $$PWD/../gtest-1.7.0/include/
+DEPENDPATH += $$PWD/../gtest-1.7.0/include/
 
-win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../gtest-1.7.0/release/libgtest.a
-else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../gtest-1.7.0/debug/libgtest.a
-else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../gtest-1.7.0/release/gtest.lib
-else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../gtest-1.7.0/debug/gtest.lib
-else:unix: PRE_TARGETDEPS += $$PWD/../../gtest-1.7.0/libgtest.a
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../gtest-1.7.0/lib/.libs/release/libgtest.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../gtest-1.7.0/lib/.libs/debug/libgtest.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../gtest-1.7.0/lib/.libs/release/gtest.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../gtest-1.7.0/lib/.libs/debug/gtest.lib
+else:unix: PRE_TARGETDEPS += $$PWD/../gtest-1.7.0/lib/.libs/libgtest.a
