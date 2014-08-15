@@ -3,19 +3,20 @@
 #include <QDesktopWidget>
 
 #include "tests/test_email_and_name.h"
+#include "tests/conection_test.h"
 
 
 EmailAddressRetrievalApplication::EmailAddressRetrievalApplication() {}
 
 int EmailAddressRetrievalApplication::exec(int argc, char *argv[]) {
     QApplication a(argc, argv);
-    //testing::InitGoogleTest(&argc, argv);
+    testing::InitGoogleTest(&argc, argv);
     mainWindow = new MainWindow();
     mainWindow->show();
     setCentralOnDesktop();
     connect(mainWindow, SIGNAL(login(QMap<QString, QString> )), this,SLOT(onLogin(QMap<QString, QString>)));
     connect(this, SIGNAL(changeForm(QList<QString> &)), mainWindow,SLOT(onChangeForm(QList <QString>&)));
-
+    //return RUN_ALL_TESTS();
     return a.exec();//return  RUN_ALL_TESTS();
 
  }

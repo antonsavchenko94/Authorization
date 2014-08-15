@@ -42,3 +42,4 @@ TEST_F(TestEmailAndName, testLogin){
   str = "bestd22ea.l@rozetka.com.ua";
   ASSERT_EQ(pos->parseToLogin(str), "bestd22ea.l");
 }
+

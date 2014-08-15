@@ -22,8 +22,11 @@ public:
   void setUserData(const QMap<QString, QString> &value);
   QMap<QString, QString> getUserData() const;
   QList<QString> fetchMessages();
+  static QString openMessage(int num);
   strMessages getMasseges();
   bool imapConnection();
+  vmime::string getImap();
+  QString parsing(QString &str);
 
   vmime::shared_ptr <vmime::net::folder> folder;
   QMap<QString, QString> userData;
@@ -33,10 +36,6 @@ private:
   vmime::shared_ptr <vmime::net::session> session;
   QMap<QString, QString> userData_;
   ParserOfString* parser;
-
-  vmime::string getImap();
-  QString parsing(QString &str);
-
 };
 
 #endif // MAIL_SERVER_H

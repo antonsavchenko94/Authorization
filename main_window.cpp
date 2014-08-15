@@ -30,7 +30,7 @@ QMap<QString, QString> MainWindow::getAutorizationCredentials(){
 
 void MainWindow::onChangeForm(QList<QString> &headers){
   setWindowTitle("Email Box");
-  MailBox* mb = new MailBox(headers);
+  MailBox* mb = new MailBox(headers, this);
   resize(mb->width(),mb->height());
   setCentralWidget(mb);
 }

@@ -31,7 +31,7 @@ QList <QString>  MailServer::fetchMessages(){
         vmime::text::decodeAndUnfold(strUtfFrom , &outText ) ;
         vmime::string sbText = outText.getConvertedText(vmime::charset("utf-8"));
         QString strFrom = QString::fromUtf8(sbText.c_str());
-
+        qDebug()<<strFrom;
         strFrom = parsing(strFrom);
         msgList.insert(i,strFrom);
   }

@@ -23,7 +23,8 @@ SOURCES +=\
     mail_box.cpp \
     parser_of_string.cpp \
     tests/test_email_and_name.cpp \
-    tests/conection_test.cpp
+    tests/conection_test.cpp \
+    mail_viewer.cpp
 
 HEADERS  += \
     mail_server.h \
@@ -35,11 +36,13 @@ HEADERS  += \
     mail_box.h \
     parser_of_string.h \
     tests/test_email_and_name.h \
-    tests/conection_test.h
+    tests/conection_test.h \
+    mail_viewer.h
 
 FORMS    += \
     mail_box.ui \
-    main_window.ui
+    main_window.ui \
+    mail_viewer.ui
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../usr/local/lib/release/ -lvmime
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../usr/local/lib/debug/ -lvmime

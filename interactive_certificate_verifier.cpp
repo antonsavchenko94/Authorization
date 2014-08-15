@@ -10,7 +10,7 @@ void interactiveCertificateVerifier::verify(vmime::shared_ptr<vmime::security::c
   catch (vmime::exceptions::certificate_verification_exception&){
     // Obtain subject's certificate
     vmime::shared_ptr <vmime::security::cert::certificate> cert = chain->getAt(0);
-    std::cout << "Server sent a '" << cert->getType() << "'" << " certificate." << std::endl;
+    //std::cout << "Server sent a '" << cert->getType() << "'" << " certificate." << std::endl;
 
     if (cert->getType() == "X.509"){
       m_trustedCerts.push_back(vmime::dynamicCast <vmime::security::cert::X509Certificate>(cert));
